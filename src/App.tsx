@@ -552,36 +552,36 @@ export default function App() {
 
     setIsSubmitting(true);
     try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      formData.set("access_key", "023d4268-a410-409e-891e-bc8c230d1e97");
+      formData.set("name", contactForm.name);
+      formData.set("email", contactForm.email);
+      formData.set("message", contactForm.message);
+      formData.set("from_name", `${contactForm.name} (Portfolio)`);
+      formData.set("subject", `New Portfolio Message from ${contactForm.name}`);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: "023d4268-a410-409e-891e-bc8c230d1e97",
-          name: contactForm.name,
-          email: contactForm.email,
-          message: contactForm.message,
-          from_name: `${contactForm.name} (Portfolio)`,
-          subject: `New Portfolio Message from ${contactForm.name}`,
-        }),
+        body: formData,
       });
 
       const data = await response.json();
+      console.log("Web3Forms response:", data);
+
       if (data.success) {
         setMessageSent(true);
-        triggerToast("Message sent successfully! Thank you for reaching out.");
+        triggerToast("Message sent successfully! Check your inbox.");
         setContactForm({ name: '', email: '', message: '' });
         setTimeout(() => {
           setMessageSent(false);
-        }, 5000);
+        }, 6000);
       } else {
-        triggerToast(data.message || "Failed to send message. Please try again.");
+        triggerToast(data.message || "Failed to send message. Please verify key or try again.");
       }
     } catch (err) {
       console.error("Web3Forms submission error:", err);
-      triggerToast("Error sending message. Please reach out via email directly.");
+      triggerToast("Network error sending message. Please reach out via email directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -1111,9 +1111,14 @@ export default function App() {
                 </div>
 
                 <form onSubmit={handleSendMessage} className="max-w-xl mx-auto space-y-4">
+                  <input type="hidden" name="access_key" value="023d4268-a410-409e-891e-bc8c230d1e97" />
+                  <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                   <div className="grid sm:grid-cols-2 gap-4">
                     <input 
                       type="text"
+                      name="name"
                       required
                       placeholder="Your Name"
                       value={contactForm.name}
@@ -1122,6 +1127,7 @@ export default function App() {
                     />
                     <input 
                       type="email"
+                      name="email"
                       required
                       placeholder="Your Email"
                       value={contactForm.email}
@@ -1131,6 +1137,8 @@ export default function App() {
                   </div>
 
                   <textarea 
+                    name="message"
+                    required
                     rows={4}
                     placeholder="Your Message..."
                     value={contactForm.message}
