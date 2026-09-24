@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web3Forms Key Verification</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    h2 { margin-top: 0; color: #38bdf8; }
+    p { color: #94a3b8; font-size: 14px; line-height: 1.5; }
+    .code {
+      background: #090d16;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #a5f3fc;
+      font-size: 13px;
+      word-break: break-all;
+      margin-bottom: 20px;
+    }
+    .field { margin-bottom: 16px; }
+    label { display: block; font-size: 12px; color: #cbd5e1; margin-bottom: 6px; font-weight: 600; }
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: #0f172a;
+      color: white;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: #3b82f6;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #2563eb; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Web3Forms Direct Key Test</h2>
+    <p>This test submits directly to Web3Forms official server via standard HTTP POST to verify if your access key is valid and receiving emails.</p>
+    
+    <div class="code">Key: 023d4268-a410-409e-891e-bc8c230d1e97</div>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="023d4268-a410-409e-891e-bc8c230d1e97" />
+      <input type="hidden" name="subject" value="Direct Web3Forms Verification Test" />
+      <input type="hidden" name="from_name" value="Key Verifier" />
+
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" name="name" value="Sivasubramanian M" required />
+      </div>
+
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" name="email" value="sivasufriend@gmail.com" required />
+      </div>
+
+      <div class="field">
+        <label>Message</label>
+        <textarea name="message" rows="3" required>Hello Sivasubramanian, this is a test to verify key 023d4268-a410-409e-891e-bc8c230d1e97.</textarea>
+      </div>
+
+      <button type="submit">Submit Direct Test to Web3Forms</button>
+    </form>
+  </div>
+</body>
+</html>
