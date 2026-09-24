@@ -677,8 +677,8 @@ export default function App() {
         </div>
       )}
 
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-40 backdrop-blur-md bg-[#010410]/85 border-b border-slate-800/80">
+      {/* Navigation Header - Frozen at the top during scrolling */}
+      <header className="fixed top-0 left-0 right-0 z-40 w-full backdrop-blur-md bg-[#010410]/90 border-b border-slate-800/80 shadow-lg shadow-black/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
           <a href="#hero" className="flex items-center gap-3 text-base sm:text-lg font-bold tracking-tight text-white group">
@@ -731,8 +731,8 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Container */}
-      <div className="flex-1 flex relative">
+      {/* Main Container - with pt-16 offset for frozen header */}
+      <div className="flex-1 flex relative pt-16">
         <div className="flex-1 overflow-y-auto">
           <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pt-6 pb-16 relative z-10">
             
