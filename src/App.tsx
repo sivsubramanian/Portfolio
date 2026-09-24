@@ -44,7 +44,7 @@ const DEFAULT_PROFILE = {
     title: "AI & Data Science Specialist | Project Coordinator Trainee",
     location: "Chennai, India",
     bio: "B.Tech graduate in AI & Data Science with hands-on experience in Data Analytics, Python, Generative AI tools, and Power BI. Passionate about product building, project coordination, and utilizing technology and data to streamline business processes.",
-    status: "Available for AI, Data Science & Project Roles",
+    status: "Building in AI, Data & Project Management",
     avatar: "/profile_v2.jpg",
     email: "sivasufriend@gmail.com",
     phone: "+91 8124387960",
