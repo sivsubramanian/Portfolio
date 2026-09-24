@@ -42,7 +42,7 @@ import {
 const DEFAULT_PROFILE = {
   personal: {
     name: "Sivasubramanian M",
-    title: "AI & Data Science Specialist | Project Coordinator Trainee",
+    title: "AI & Data Science Graduate | Project Coordinator Trainee",
     location: "Chennai, India",
     bio: "B.Tech graduate in AI & Data Science with hands-on experience in Data Analytics, Python, Generative AI tools, and Power BI. Passionate about product building, project coordination, and utilizing technology and data to streamline business processes.",
     status: "Building in AI, Data & Project Management",
@@ -223,7 +223,7 @@ const ACCENT_THEMES = [
 ];
 
 const ROTATING_TITLES = [
-  "AI & Data Science Specialist",
+  "AI & Data Science Graduate",
   "Project Coordinator Trainee",
   "Power BI & Analytics Developer",
   "Generative AI & LLM Innovator"

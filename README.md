@@ -30,7 +30,7 @@
 
 ## 🌟 Overview
 
-Welcome to the personal portfolio repository of **Sivasubramanian M** — an AI & Data Science specialist, Project Coordinator Trainee, and passionate product builder based in Chennai, India. 
+Welcome to the personal portfolio repository of **Sivasubramanian M** — an AI & Data Science Graduate, Project Coordinator Trainee, and passionate product builder based in Chennai, India. 
 
 Engineered with **React 18**, **Vite**, and **Tailwind CSS**, this portfolio combines visual aesthetics with subtle physics-based motion tracking, responsive layouts, and interactive components.
 
