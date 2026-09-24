@@ -552,36 +552,49 @@ export default function App() {
 
     setIsSubmitting(true);
     try {
-      const form = e.currentTarget;
-      const formData = new FormData(form);
-      formData.set("access_key", "023d4268-a410-409e-891e-bc8c230d1e97");
-      formData.set("name", contactForm.name);
-      formData.set("email", contactForm.email);
-      formData.set("message", contactForm.message);
-      formData.set("from_name", `${contactForm.name} (Portfolio)`);
-      formData.set("subject", `New Portfolio Message from ${contactForm.name}`);
+      const formData = new FormData();
+      formData.append("access_key", "023d4268-a410-409e-891e-bc8c230d1e97");
+      formData.append("apikey", "023d4268-a410-409e-891e-bc8c230d1e97");
+      formData.append("name", contactForm.name);
+      formData.append("email", contactForm.email);
+      formData.append("message", contactForm.message);
+      formData.append("from_name", `${contactForm.name} (Portfolio)`);
+      formData.append("subject", `New Portfolio Message from ${contactForm.name}`);
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
       });
 
-      const data = await response.json();
-      console.log("Web3Forms response:", data);
+      let data;
+      const text = await response.text();
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.warn("Web3Forms response was not JSON:", text);
+        data = { success: response.ok, message: text };
+      }
 
-      if (data.success) {
+      console.log("Web3Forms response data:", data);
+
+      if (data && data.success) {
         setMessageSent(true);
-        triggerToast("Message sent successfully! Check your inbox.");
+        triggerToast("Message delivered to Sivasubramanian! Check your inbox.");
         setContactForm({ name: '', email: '', message: '' });
         setTimeout(() => {
           setMessageSent(false);
         }, 6000);
       } else {
-        triggerToast(data.message || "Failed to send message. Please verify key or try again.");
+        const errorMsg = data?.message || "Web3Forms submission failed";
+        triggerToast(`Status: ${errorMsg}`);
+        console.error("Web3Forms error details:", data);
       }
     } catch (err) {
-      console.error("Web3Forms submission error:", err);
-      triggerToast("Network error sending message. Please reach out via email directly.");
+      console.error("Submission error:", err);
+      triggerToast("Network issue connecting to form service. Opening email client fallback...");
+      window.open(
+        `mailto:${profile.personal.email}?subject=${encodeURIComponent("Portfolio Message from " + contactForm.name)}&body=${encodeURIComponent(contactForm.message + "\n\nFrom: " + contactForm.name + " (" + contactForm.email + ")")}`
+      );
     } finally {
       setIsSubmitting(false);
     }
