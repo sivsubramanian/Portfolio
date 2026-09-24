@@ -87,7 +87,8 @@ const DEFAULT_PROFILE = {
     { name: "Generative AI & LLM Tools", level: 88, category: "AI & GenAI" },
     { name: "Prompt Engineering", level: 90, category: "AI & GenAI" },
     { name: "Project Coordination", level: 92, category: "Management" },
-    { name: "QA Tracking & Workflows", level: 88, category: "Management" }
+    { name: "Workflow Management", level: 90, category: "Management" },
+    { name: "Cross-Functional Collaboration", level: 89, category: "Management" }
   ],
   projects: [
     {
@@ -162,10 +163,10 @@ const DEFAULT_PROFILE = {
       company: "Mediant Labs",
       type: "full-time",
       period: "June 2026 - Present",
-      description: "Supporting project coordination, process tracking, QA workflows, and reporting. Leveraging data and AI tools to increase operational efficiency.",
-      skills: ["Project Coordination", "QA Tracking", "AI Tools"],
+      description: "Supporting project coordination, workflow management, process tracking, and cross-functional reporting. Leveraging data and AI tools to increase operational efficiency.",
+      skills: ["Project Coordination", "Workflow Management", "Cross-Functional Collaboration", "AI Tools"],
       bullets: [
-        "Coordinating cross-functional sprint deliveries, tracking bug resolution workflows, and managing QA schedules.",
+        "Coordinating cross-functional sprint deliveries, optimizing workflow processes, and managing project schedules.",
         "Leveraging AI tooling to automate daily standup reports and synthesize project milestones.",
         "Collaborating with tech leads to bridge client requirements and engineering sprints."
       ]
