@@ -35,7 +35,8 @@ import {
   Flame,
   ArrowUp,
   Printer,
-  GraduationCap
+  GraduationCap,
+  Loader2
 } from 'lucide-react';
 
 const DEFAULT_PROFILE = {
@@ -451,6 +452,7 @@ export default function App() {
   // Contact Form State
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const [messageSent, setMessageSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Typewriter Loop
   useEffect(() => {
@@ -544,15 +546,45 @@ export default function App() {
     setChatInput('');
   };
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (!contactForm.name || !contactForm.email) return;
-    setMessageSent(true);
-    triggerToast("Message sent successfully!");
-    setTimeout(() => {
-      setContactForm({ name: '', email: '', message: '' });
-      setMessageSent(false);
-    }, 4000);
+    if (!contactForm.name || !contactForm.email || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "023d4268-a410-409e-891e-bc8c230d1e97",
+          name: contactForm.name,
+          email: contactForm.email,
+          message: contactForm.message,
+          from_name: `${contactForm.name} (Portfolio)`,
+          subject: `New Portfolio Message from ${contactForm.name}`,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setMessageSent(true);
+        triggerToast("Message sent successfully! Thank you for reaching out.");
+        setContactForm({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          setMessageSent(false);
+        }, 5000);
+      } else {
+        triggerToast(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error("Web3Forms submission error:", err);
+      triggerToast("Error sending message. Please reach out via email directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Filter Categories
@@ -1108,14 +1140,20 @@ export default function App() {
 
                   <button
                     type="submit"
-                    disabled={messageSent}
+                    disabled={isSubmitting || messageSent}
                     className={`w-full py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all ${
                       messageSent 
                         ? 'bg-emerald-600 text-white' 
+                        : isSubmitting
+                        ? 'opacity-70 cursor-not-allowed bg-slate-800 text-slate-300'
                         : `${activeTheme.button}`
                     }`}
                   >
-                    {messageSent ? (
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" /> Sending Message...
+                      </>
+                    ) : messageSent ? (
                       <>
                         <CheckCircle2 className="w-4 h-4" /> Message Delivered!
                       </>
