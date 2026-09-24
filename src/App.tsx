@@ -1123,7 +1123,12 @@ export default function App() {
                   </p>
                 </div>
 
-                <form onSubmit={handleSendMessage} className="max-w-xl mx-auto space-y-4">
+                <form 
+                  action="https://api.web3forms.com/submit" 
+                  method="POST" 
+                  onSubmit={handleSendMessage} 
+                  className="max-w-xl mx-auto space-y-4"
+                >
                   <input type="hidden" name="access_key" value="023d4268-a410-409e-891e-bc8c230d1e97" />
                   <input type="hidden" name="from_name" value="Portfolio Contact Form" />
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
