@@ -636,11 +636,13 @@ export default function App() {
       <header className="sticky top-0 z-40 backdrop-blur-md bg-[#010410]/85 border-b border-slate-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
-          <a href="#hero" className="flex items-center gap-2.5 text-base sm:text-lg font-bold tracking-tight text-white group">
-            <span className={`p-1.5 rounded-lg bg-slate-900 border border-slate-800 transition-transform group-hover:scale-110 ${activeTheme.text}`}>
-              <Terminal className="w-5 h-5" />
-            </span>
-            <span>{profile.personal.name}</span>
+          <a href="#hero" className="flex items-center gap-3 text-base sm:text-lg font-bold tracking-tight text-white group">
+            <img 
+              src={profile.personal.avatar} 
+              alt={profile.personal.name} 
+              className={`w-9 h-9 rounded-full object-cover object-top border-2 ${activeTheme.border} transition-transform group-hover:scale-110 shadow-sm`}
+            />
+            <span className="group-hover:text-slate-200 transition-colors">{profile.personal.name}</span>
           </a>
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
