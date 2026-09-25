@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Github, 
   Linkedin, 
+  Instagram,
   Twitter, 
   Mail, 
   ExternalLink, 
@@ -52,7 +53,8 @@ const DEFAULT_PROFILE = {
     resumeUrl: "https://drive.google.com/file/d/1ShSUQ0S5LI2Q8iANIl8-tOSuUjERpIQ0/view?usp=drive_link",
     github: "https://github.com/sivsubramanian",
     linkedin: "https://www.linkedin.com/in/sivasubramanian8",
-    twitter: "https://twitter.com"
+    twitter: "https://twitter.com",
+    instagram: "https://www.instagram.com/sivaaxyz_?stkn=ZGFoc3NndHl0cDI5"
   },
   stats: [
     { label: "Degree CGPA", value: "7.8" },
@@ -535,8 +537,8 @@ export default function App() {
       botReply = `His standout projects are: 1) Re-Book (Campus Book Exchange Platform with live Vercel demo & GitHub), 2) Netflix Power BI Dashboard (GitHub repo), 3) Talkify (Messaging Mobile App UI Prototype on Figma), and 4) Cricket Scoreboard Redesign (GitHub repo).`;
     } else if (lower.includes('experience') || lower.includes('work') || lower.includes('mediant')) {
       botReply = `He has worked at: Mediant Labs (Project Coordinator Trainee), Synergy Marine Group (Technology Intern), and Industrial Design & Animations (Data Analytics Intern).`;
-    } else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('hire')) {
-      botReply = `You can email him directly at ${profile.personal.email} or call ${profile.personal.phone || '+91 8124387960'}.`;
+    } else if (lower.includes('contact') || lower.includes('email') || lower.includes('phone') || lower.includes('hire') || lower.includes('instagram') || lower.includes('insta')) {
+      botReply = `You can email him directly at ${profile.personal.email}, call ${profile.personal.phone || '+91 8124387960'}, or connect on Instagram @sivaaxyz_!`;
     } else if (lower.includes('resume') || lower.includes('cv') || lower.includes('pdf')) {
       botReply = `You can view and download Sivasubramanian's full resume on Google Drive here: ${profile.personal.resumeUrl || 'https://drive.google.com/file/d/1ShSUQ0S5LI2Q8iANIl8-tOSuUjERpIQ0/view?usp=drive_link'}`;
     } else if (lower.includes('education') || lower.includes('degree') || lower.includes('college')) {
@@ -1225,6 +1227,16 @@ export default function App() {
                   >
                     <Github className="w-4 h-4 text-slate-300" />
                     <span>github.com/sivsubramanian</span>
+                    <ExternalLink className="w-3 h-3 text-slate-500" />
+                  </a>
+                  <a 
+                    href={profile.personal.instagram || "https://www.instagram.com/sivaaxyz_?stkn=ZGFoc3NndHl0cDI5"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-pink-400 flex items-center gap-1.5 transition-colors"
+                  >
+                    <Instagram className="w-4 h-4 text-pink-400" />
+                    <span>instagram.com/sivaaxyz_</span>
                     <ExternalLink className="w-3 h-3 text-slate-500" />
                   </a>
                 </div>
