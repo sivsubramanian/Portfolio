@@ -743,15 +743,6 @@ export default function App() {
             <section id="hero" className="pt-2 sm:pt-4 flex flex-col md:flex-row items-center justify-between gap-10 relative scroll-mt-24">
               <div id="about" className="absolute -top-24 pointer-events-none" />
               <div className="flex-1 space-y-6 text-center md:text-left">
-                {/* Status Badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-slate-900/90 border border-emerald-500/30 text-emerald-400 shadow-lg shadow-emerald-500/10 backdrop-blur-md">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
-                  <span>{profile.personal.status}</span>
-                </div>
-
                 {/* Animated Holographic Headline */}
                 <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
                   Hi, I'm{" "}
