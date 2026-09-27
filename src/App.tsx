@@ -45,7 +45,7 @@ const DEFAULT_PROFILE = {
     name: "Sivasubramanian M",
     title: "AI & Data Science Graduate | Project Coordinator Trainee",
     location: "Chennai, India",
-    bio: "B.Tech graduate in AI & Data Science with hands-on experience in Data Analytics, Python, Generative AI tools, and Power BI. Passionate about product building, project coordination, and utilizing technology and data to streamline business processes.",
+    bio: "Project Coordinator and AI Data Science graduate with a strong interest in Project Management and Product Management. Passionate about solving business problems, improving processes, and delivering value through collaboration and data-driven decision making. Eager to learn, grow, and contribute to building impactful products and successful projects.",
     status: "Building in AI, Data & Project Management",
     avatar: "/profile_v2.jpg",
     email: "sivasufriend@gmail.com",
